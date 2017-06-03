@@ -10,7 +10,7 @@ import subprocess
 import sys
 import time
 
-from core import *
+from core import crypto, persistence, scan, survey, toolkit
 
 
 # change these to suit your needs
